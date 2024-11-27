@@ -10,16 +10,17 @@ st.set_page_config(page_title="Health Assistant",
 
     
 # getting the working directory of the main.py
-working_dir = os.path.dirname(os.path.abspath(__file__))
-working_dir = r'E:\Project\multiple-disease-prediction-streamlit-app-main'
+import os
+import pickle
 
-# loading the saved models
+# Get the current working directory dynamically
+base_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(f'E:\Project\multiple-disease-prediction-streamlit-app-main\saved_models\diabetes_model.sav', 'rb'))
+# Use relative paths for loading models
+diabetes_model = pickle.load(open(os.path.join(base_dir, "saved_models", "diabetes_model.sav"), "rb"))
+heart_disease_model = pickle.load(open(os.path.join(base_dir, "saved_models", "heart_disease_model.sav"), "rb"))
+parkinsons_model = pickle.load(open(os.path.join(base_dir, "saved_models", "parkinsons_model.sav"), "rb"))
 
-heart_disease_model = pickle.load(open(f'E:\Project\multiple-disease-prediction-streamlit-app-main\saved_models\heart_disease_model.sav', 'rb'))
-
-parkinsons_model = pickle.load(open(f'E:\Project\multiple-disease-prediction-streamlit-app-main\saved_models\parkinsons_model.sav', 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
